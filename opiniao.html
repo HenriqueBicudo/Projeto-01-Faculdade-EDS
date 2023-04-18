@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>pesquisa</title>
+    <link rel="stylesheet" href="style-form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      
+      <nav class="navHeader">
+        <ul class="ulHeader">          
+          <li class="liHeader"><a class="aHeader" href="/index.html">Pagina Inicial</a></li>
+          <li class="liHeader"><a class="aHeader" href="/opiniao.html">Como podemos melhorar?</a></li>
+          <li class="liHeader"><a class="aHeader" href="/sobre.html">sobre</a></li>
+        </ul>
+      </nav>
+    </header>
+  <main>
+    <div class="form-container">
+        <form action="http://127.0.0.1:5500/resposta.html">
+        <h2>Onde podemos melhorar?</h2>
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" required>
+    
+        <label for="email">E-mail:</label>
+        <input type="text" id="email" name="email" required>
+    
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" name="telefone" placeholder="(xx) xxxxx-xxxx" required>
+    
+        <label for="tipo-site">Como você chegou ao nosso site?</label>
+        <select id="tipo-site" name="tipo-site">
+          <option value="mtrDeBusca">Motor de busca</option>
+          <option value="midiaSocial">Mídia social</option>
+          <option value="bab">Boca a boca</option>
+          <option value="outro">Outro</option>
+        </select>
+    
+        <label for="opiniao-sobre">Qual sua opinião sobre nosso site?:</label>
+        <textarea id="opiniao-sobre" name="opiniao-sobre"></textarea>
+        <div class="recursos">
+
+        <label>Quais funcionalidades você gostaria de ver no nosso site?</label>
+        <div>
+          <input type="checkbox" id="design-responsivo" name="design-responsivo">
+          <label for="design-responsivo">Design Responsivo</label>
+        </div>
+        <div>
+          <input type="checkbox" id="loja" name="loja">
+          <label for="loja">Loja virtual</label>
+        </div>
+        <div>
+          <input type="checkbox" id="blog" name="blog">
+          <label for="blog">Blog integrado</label>
+        </div>
+      </div>
+
+      <div class="satisfacao">
+        <label>O quão satisfeito estpá com o nosso serviço?</label>
+        <div>
+          <input type="radio" id="1" name="satisfacao" value="1">
+          <label for="1">1</label>
+        </div>
+        <div>
+          <input type="radio" id="2" name="satisfacao" value="2">
+          <label for="2">2</label>
+        </div>
+        <div>
+          <input type="radio" id="3" name="satisfacao" value="3">
+          <label for="3">3</label>
+        </div>
+        <div>
+          <input type="radio" id="4" name="satisfacao" value="4">
+          <label for="4">4</label>
+        </div>
+        <div>
+          <input type="radio" id="5" name="satisfacao" value="5">
+          <label for="5">5</label>
+        </div>
+      </div>
+      <div class="novidadeEmail">
+        <label>Gostaria de receber novidades pelo email?</label>
+        <div>
+          <input type="radio" id="sim" name="novidadeEmail" value="sim">
+          <label for="sim">Sim</label>
+        </div>
+        <div>
+          <input type="radio" id="nao" name="novidadeEmail" value="nao">
+          <label for="nao">Não</label>
+        </div>
+      </div>
+        <div>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </main>
+    
+    <footer class="rodape">
+      <p>&copy; 2023 - Word Wide Sites</p>
+    </footer>
+  </body>
+  </html>
+  <script>
+// Seleciona o elemento do telefone pelo ID
+const telefoneInput = document.querySelector('#telefone');
+
+// Adiciona um listener para quando uma tecla for pressionada
+telefoneInput.addEventListener('keydown', function(event) {
+  // Obtém o valor atual do campo
+  let value = this.value;
+
+  // Verifica se o valor já possui o formato correto
+  if (value.length === 2 && event.key !== 'Backspace') {
+    value += ' ';
+  } else if (value.length === 8 && event.key !== 'Backspace') {
+    value += '-';
+  }
+
+  // Formata o valor do campo com a máscara
+  this.value = value.replace(/\D/g, '').replace(/^(\d{2})(\d{4,5})(\d{4})$/, '($1) $2-$3');
+
+  // Verifica se o número máximo de caracteres foi atingido
+  if (this.value.length >= 15 && event.key !== 'Backspace') {
+    // Cancela o evento de digitação
+    event.preventDefault();
+  }
+});
+
+  </script>
